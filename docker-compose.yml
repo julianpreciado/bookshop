@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: tN3&YJMWPlg
+      MYSQL_DATABASE: u131905672_bookshop
+      MYSQL_USER: u131905672_bookshop
+      MYSQL_PASSWORD: tN3&YJMWPlg
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    environment:
+      DB_HOST: srv565.hstgr.io
+      DB_NAME: u131905672_bookshop
+      DB_USER: u131905672_bookshop
+      DB_PASSWORD: tN3&YJMWPlg
